@@ -1,0 +1,10 @@
+import { Entrada } from './styles'
+interface InputProps{
+    type: string,
+    placeholder: string,
+    onChange?: (e:any)=>void
+}
+
+export default function Input(props: InputProps){
+    return <Entrada type={props.type} placeholder={props.placeholder} onChange={props.onChange} />
+}

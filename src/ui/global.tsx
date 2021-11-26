@@ -3,11 +3,10 @@ import fonts from './fonts'
 
 export default createGlobalStyle `
 
-*{
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    outline: 0;
-    box-sizing: 0;
 }
 
 body{
@@ -15,6 +14,8 @@ body{
     font-size: 14px;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
+    margin: 0;
+   
 }
 
 html, body, #root{
