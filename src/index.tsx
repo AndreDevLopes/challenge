@@ -1,12 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Login from './pages/Login'
-
-
+import Rotas from './routes'
 
 ReactDOM.render(
   <React.StrictMode>
-   <Login/>
+    <Rotas />
   </React.StrictMode>,
   document.getElementById('root')
 );
