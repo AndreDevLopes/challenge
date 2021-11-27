@@ -56,13 +56,3 @@ export const BarProg = styled(BarCont)`
     background-color: ${cores.primary} ;
 `;
 
-export const Title = styled.h1`
-    font-family: ${fonts.family};
-    font-size: 13px;
-    font-style: normal;
-    font-weight: ${fonts.semibold};
-    line-height: 20px;
-    letter-spacing: 0em;
-    text-align: left;
-    color: ${cores.gray_200}
-`;

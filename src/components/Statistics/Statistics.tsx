@@ -9,9 +9,9 @@ import { Conatiner,
 
 export default function Statistics() {
     const handleEstatistica = () =>{
-        let list = [1,2,3,4,5,6].map(()=>{
+        let list = [1,2,3,4,5,6].map((item, index)=>{
             return(
-                <Row>
+                <Row key={index}>
                     <Col size={1}>
                         <Text>HP</Text>
                     </Col>
