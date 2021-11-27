@@ -18,3 +18,28 @@ export const Entrada = styled.input`
     color: ${(props: EntradaProps)=> props.tema === 'dark'? `${cores.white}` : `${cores.gray_500}`};
     padding-left: 26px;
 `;
+
+export const Seach = styled(Entrada)`
+    background-color: ${(props: EntradaProps)=> props.tema === 'dark'? `${cores.gray_500}` : `${cores.white}`};
+`;
+
+export const Btn = styled.button`
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    right: 55px;
+    top:4px;
+    background-color: transparent;
+
+`;
+
+export const Container = styled.div`
+    display: flex;
+    position: relative;
+`;

@@ -7,7 +7,7 @@ export default function Seach(){
             <Container>
                 <Row>
                     <Col size={1}>
-                        <InputSeach type="text" placeholder="Procure por pokémons" />
+                        <InputSeach type="text" placeholder="Procure por pokémons" onChange={(e)=>{}} onClick={()=>{}} />
                     </Col>
                 </Row>
                 <Col size={4} ></Col>

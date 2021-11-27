@@ -15,7 +15,7 @@ export const Row = styled.div`
     justify-content: center;
     align-self:center;
     width: 50%;
-    margin-top:50px;
+    margin-top:30px;
 `;
 
 export const Col = styled.div`
