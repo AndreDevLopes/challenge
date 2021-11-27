@@ -92,3 +92,12 @@ export const Text = styled.p`
         return props.tema === 'dark'? `${cores.white}` : `${cores.gray_500}`
     }};
 `;
+
+export const BtnCard = styled.button`
+    height: 32px;
+    width: 100%;
+    border-radius: 8px;
+    background-color: ${cores.primary};
+    border: solid 1px ${cores.primary};
+    cursor: pointer;
+`;
