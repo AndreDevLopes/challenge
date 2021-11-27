@@ -14,3 +14,24 @@ export const Button = styled.button`
     border: none;
     cursor: pointer;
 `;
+interface BntProps{
+    tema?: string
+}
+
+export const Btn = styled.button`
+    height: 31px;
+    width: 139px;
+    border-radius: 22px;
+    cursor: pointer;
+    border: ${(props: BntProps)=> props.tema === 'dark'? '': `solid 1px ${cores.gray_500}`};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
+
+export const Text = styled.p`
+    font-family: ${fonts.family};
+    font-weight: ${fonts.medium};
+    font-size: 12px;
+    margin: 5px;
+`;
