@@ -8,3 +8,7 @@ interface ContainerProps{
 export const Container = styled.div`
      background-color: ${(props: ContainerProps)=> props.tema === 'dark'? `${cores.gray_500}` : `${cores.white}`};
 `;
+
+export const Main = styled.section`
+    min-height: 80.1vh;
+`;

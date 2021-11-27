@@ -36,6 +36,7 @@ export const Li = styled.li`
     align-items: center;
     font-family: ${fonts.family};
     font-weight: ${fonts.regular};
+    font-style:normal;
     font-size: 14px;
     color:${(props: TemaProps)=> props.tema === 'dark'? `${cores.white}` : `${cores.gray_500}`};
     border-bottom: solid ${(props: TemaProps)=> props.tema === 'dark'? `${cores.gray_400}` : `${cores.primary}`};

@@ -36,7 +36,7 @@ export const Title = styled.h1`
 `;
 
 export const Img = styled.img`
-    width: 59vw;
+    width: 58.8vw;
 `;
 
 export const Logo = styled.img`
