@@ -13,7 +13,7 @@ interface TitleProps{
 export const Container = styled.div`
     display: flex;
     margin: 0;
-    background-color: ${(props: ContainerProps)=> props.tema === 'dark'? `${cores.gray_500}` : `${cores.white}`};
+    background-color: ${(props: ContainerProps)=> props.tema === 'dark'? `${cores.gray_500}` : `${cores.gray_100}`};
 `;
 
 export const Column = styled.div`

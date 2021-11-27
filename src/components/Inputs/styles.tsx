@@ -14,7 +14,7 @@ export const Entrada = styled.input`
     font-weight: ${fonts.regular};
     font-size: 12px;
     border: solid 1px ${cores.gray_300};
-    background-color: ${(props: EntradaProps)=> props.tema === 'dark'? `${cores.gray_500}` : `${cores.white}`};
+    background-color: ${(props: EntradaProps)=> props.tema === 'dark'? `${cores.gray_500}` : `${cores.gray_100}`};
     color: ${(props: EntradaProps)=> props.tema === 'dark'? `${cores.white}` : `${cores.gray_500}`};
     padding-left: 26px;
 `;

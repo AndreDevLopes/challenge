@@ -6,6 +6,7 @@ import {
 
 import Login from "./pages/Login/Login"
 import Home from "./pages/Home/Home"
+import Seach from "./pages/Seach/Seach"
 
 
 const Rotas = () => {
@@ -14,6 +15,7 @@ const Rotas = () => {
            <Routes>
               <Route path="/" element={<Login />} />
               <Route path="/home" element={<Home />} />
+              <Route path="/seach" element={<Seach />} />
            </Routes>
        </Router>
    )

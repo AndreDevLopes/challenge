@@ -24,7 +24,7 @@ export const Btn = styled.button`
     width: 139px;
     border-radius: 22px;
     cursor: pointer;
-    background-color: ${(props: TemaProps)=> props.tema === 'dark'? `${cores.gray_500}` : `${cores.white}`};
+    background-color: ${(props: TemaProps)=> props.tema === 'dark'? `${cores.gray_500}` : `${cores.gray_100}`};
     border: ${(props: TemaProps)=> props.tema === 'dark'? `solid 1px ${cores.white}` : `solid 1px ${cores.gray_500}`};
     color:${(props: TemaProps)=> props.tema === 'dark'? `${cores.white}` : `${cores.gray_500}`};
     display: flex;
@@ -60,16 +60,5 @@ export const Text = styled.p`
     font-weight: ${fonts.medium};
     font-size: 12px;
     margin: 5px;
-    color:${(props: TemaProps)=> props.tema === 'dark'? `${cores.white}` : `${cores.gray_500}`};
-`;
-
-export const Text2 = styled.p`
-    font-family: ${fonts.family};
-    font-size: 14px;
-    font-style: normal;
-    font-weight: ${fonts.medium};
-    line-height: 21px;
-    letter-spacing: 0em;
-    text-align: center;
     color:${(props: TemaProps)=> props.tema === 'dark'? `${cores.white}` : `${cores.gray_500}`};
 `;
