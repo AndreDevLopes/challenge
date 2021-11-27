@@ -12,6 +12,7 @@ import ButtonLogout from "../Buttons/ButtonLogout"
 import useAppData from "../../data/hook/useApiData"
 
 
+
 export default function Navbar(){
     const ctx = useAppData()
    
@@ -24,9 +25,9 @@ export default function Navbar(){
                     </Col>
                     <Col size={1}>
                         <Ul>
-                            <Li tema={ctx.tema}>Favoritos</Li>
-                            <Li tema={ctx.tema}>Procurar</Li>
-                            <Li tema={ctx.tema}>Ver todos</Li>
+                            <Li to="/home" tema={ctx.tema}>Favoritos</Li>
+                            <Li to="/seach" tema={ctx.tema}>Procurar</Li>
+                            <Li to="/all" tema={ctx.tema}>Ver todos</Li>
                         </Ul>
                     </Col>
                     <Col size={2}>

@@ -6,6 +6,11 @@ interface TemaProps{
     tema?: string
 }
 
+interface FilterProps{
+    tema?: string,
+    select?: boolean
+}
+
 export const Button = styled.button`
     background-color: ${cores.primary};
     font-size: 16px;
@@ -55,10 +60,35 @@ export const BtnSeach = styled.button`
    
 `;
 
+export const BtnFilter = styled.button`
+    height: 42px;
+    width: 145px;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: ${(props: FilterProps)=> {
+        if(props.select){
+            return  `${cores.primary}`
+        }
+        return props.tema === 'dark'? `${cores.gray_500}` : `${cores.gray_100}`
+    }};
+    border: ${(props: FilterProps)=> {
+        if(props.select){
+            return `${cores.primary}`
+        }
+        return props.tema === 'dark'? `solid 1px ${cores.white}` : `solid 1px ${cores.gray_500}`
+    }};
+
+`;
+
 export const Text = styled.p`
     font-family: ${fonts.family};
     font-weight: ${fonts.medium};
     font-size: 12px;
     margin: 5px;
-    color:${(props: TemaProps)=> props.tema === 'dark'? `${cores.white}` : `${cores.gray_500}`};
+    color: ${(props: FilterProps)=> {
+        if(props.select){
+            return  `${cores.gray_500}`
+        }
+        return props.tema === 'dark'? `${cores.white}` : `${cores.gray_500}`
+    }};
 `;

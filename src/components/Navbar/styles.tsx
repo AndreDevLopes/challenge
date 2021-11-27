@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import cores from '../../ui/cores'
 import fonts from '../../ui/fonts'
+import { Link } from "react-router-dom"
 
 
 interface ColProps{
@@ -30,7 +31,7 @@ export const Ul = styled.ul`
     list-style: none;
 `;
 
-export const Li = styled.li`
+export const Li = styled(Link)`
     height: 44px;
     display: flex;
     align-items: center;
@@ -40,6 +41,7 @@ export const Li = styled.li`
     color:${(props: TemaProps)=> props.tema === 'dark'? `${cores.white}` : `${cores.gray_500}`};
     border-bottom: solid ${(props: TemaProps)=> props.tema === 'dark'? `${cores.gray_400}` : `${cores.primary}`};
     cursor: pointer;
+    text-decoration: none;
     &:hover{
         color:${(props: TemaProps)=> props.tema === 'dark'? `${cores.primary}` : `${cores.gray_500}`};
         font-weight: ${fonts.semibold};
