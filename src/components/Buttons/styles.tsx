@@ -14,7 +14,7 @@ export const Button = styled.button`
     border: none;
     cursor: pointer;
 `;
-interface BntProps{
+interface BtnProps{
     tema?: string
 }
 
@@ -23,7 +23,9 @@ export const Btn = styled.button`
     width: 139px;
     border-radius: 22px;
     cursor: pointer;
-    border: ${(props: BntProps)=> props.tema === 'dark'? '': `solid 1px ${cores.gray_500}`};
+    background-color: ${(props: BtnProps)=> props.tema === 'dark'? `${cores.gray_500}` : `${cores.white}`};
+    border: ${(props: BtnProps)=> props.tema === 'dark'? `solid 1px ${cores.white}` : `solid 1px ${cores.gray_500}`};
+    color:${(props: BtnProps)=> props.tema === 'dark'? `${cores.white}` : `${cores.gray_500}`};
     display: flex;
     align-items: center;
     justify-content: center;

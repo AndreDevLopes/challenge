@@ -10,5 +10,5 @@ export const Row = styled.div`
 `;
 
 export const BoxButton= styled.div`
-    margin-top: 30px;
+    margin-top: 50px;
 `;

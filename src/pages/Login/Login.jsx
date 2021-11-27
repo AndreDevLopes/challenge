@@ -5,26 +5,30 @@ import { Container,
          Title,
          Row,
          Img,
-         Logo } from './styles'
+         Logo,
+         BoxTitle } from './styles'
 import logo from '../../assets/logo.png'
 import img from '../../assets/light.png'
+import imgDark from '../../assets/dark.png'
 import useAppData from "../../data/hook/useApiData"
 
 
 export default function Login(){
     const ctx = useAppData()
 
-    return (<Container>
+    return (<Container tema={ctx.tema}>
                 <Column> 
                     <Row>
                         <Logo src={logo} alt="logo" />
-                        <Title>Comece a coletar pokémons!</Title> 
+                        <BoxTitle>
+                            <Title tema={ctx.tema}>Comece a coletar pokémons!</Title> 
+                        </BoxTitle>
                         <FormLogin />  
                         <ButtonTema tema={ctx.tema} onClick={ctx.alternarTema} />
                     </Row> 
                 </Column>
                 <Column>
-                    <Img src={img}  /> 
+                    <Img src={ctx.tema === 'dark'? imgDark : img}  /> 
                 </Column>
             </Container>)
 }

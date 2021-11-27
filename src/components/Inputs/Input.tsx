@@ -1,4 +1,6 @@
 import { Entrada } from './styles'
+import useAppData from '../../data/hook/useApiData'
+
 interface InputProps{
     type: string,
     placeholder: string,
@@ -6,5 +8,12 @@ interface InputProps{
 }
 
 export default function Input(props: InputProps){
-    return <Entrada type={props.type} placeholder={props.placeholder} onChange={props.onChange} />
+    const ctx = useAppData()
+
+    return <Entrada
+             type={props.type}
+             placeholder={props.placeholder}
+             onChange={props.onChange}
+             tema={ctx.tema}
+              />
 }
