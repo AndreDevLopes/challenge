@@ -11,6 +11,10 @@ interface FilterProps{
     select?: boolean
 }
 
+interface ColorProps{
+    color: string
+}
+
 export const Button = styled.button`
     background-color: ${cores.primary};
     font-size: 16px;
@@ -99,5 +103,21 @@ export const BtnCard = styled.button`
     border-radius: 8px;
     background-color: ${cores.primary};
     border: solid 1px ${cores.primary};
+    cursor: pointer;
+`;
+
+export const BtnClose = styled.button`
+    border-radius: 50%;
+    border: none; 
+    background-color: transparent;
+    cursor: pointer;
+`;
+
+export const BtnModal = styled.button`
+    height: 46px;
+    width:100%;
+    border-radius: 8px;
+    background-color: ${(props: ColorProps)=> props.color};
+    border: solid 1px  ${(props: ColorProps)=> props.color};
     cursor: pointer;
 `;
