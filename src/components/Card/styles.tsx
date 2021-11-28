@@ -12,7 +12,7 @@ interface TemaProp{
 }
 
 export const Container = styled.main`
-    height: 256px;
+    height: 270px;
     width: 165px;
     border-radius: 8px;
     background-color: ${(props: TemaProp)=> props.tema === 'dark'? `${cores.gray_400}` : `${cores.white}`};
@@ -89,4 +89,8 @@ export const Tag = styled.h2`
     display: flex;
     align-items: center;
     justify-content: center;
+`;
+
+export const Img = styled.img`
+    max-height: 100px;
 `;

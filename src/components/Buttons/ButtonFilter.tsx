@@ -10,7 +10,7 @@ interface ButtonFilterProps{
 export default function ButtonFilter(props: ButtonFilterProps) {
     const ctx = useAppData()
 
-    return(<BtnFilter select={props.select} tema={ctx.tema}>
+    return(<BtnFilter select={props.select} tema={ctx.tema} onClick={props.onClick}>
                 <Text select={props.select} tema={ctx.tema}>
                      {props.text}
                 </Text>

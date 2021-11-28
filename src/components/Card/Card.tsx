@@ -6,7 +6,8 @@ import { Container,
          RowText,
          Tag,
          RowTags,
-         RowButton
+         RowButton,
+         Img
        } from "./styles"
 
 import { AiFillHeart } from 'react-icons/ai'
@@ -90,7 +91,7 @@ export default function Card(props: CardProps) {
                     <AiFillHeart fontSize={30} color={ctx.tema === 'dark'? cores.white : cores.heart} />
                 </RowHeart>
                 <RowImg>
-                    <img src={poke? poke.sprites.front_default : ''} alt="pokemon" />
+                    <Img src={poke? poke.sprites.front_default : ''} alt="pokemon" />
                 </RowImg>
                 <RowText>
                     <Title tema={ctx.tema}>{props.name}</Title>
