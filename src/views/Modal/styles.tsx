@@ -30,9 +30,6 @@ export const Box = styled.div`
     align-items: center;
     justify-content: center;
     background-color: rgba(0,0,0,0.4);
-    body{
-        overflow: hidden;
-    } 
         
 `;
 

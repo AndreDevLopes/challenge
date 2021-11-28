@@ -10,11 +10,18 @@ import { Nav,
 import logodark from '../../assets/logodark.png'
 import ButtonLogout from "../Buttons/ButtonLogout"
 import useAppData from "../../data/hook/useApiData"
+import { useNavigate } from "react-router"
 
 
 
 export default function Navbar(){
     const ctx = useAppData()
+    const navigate = useNavigate()
+
+    const sair = () =>{
+        localStorage.removeItem('token')
+        navigate('/')
+    }
    
     return(<Nav tema={ctx.tema}>
                 <Row>
@@ -32,7 +39,7 @@ export default function Navbar(){
                     </Col>
                     <Col size={2}>
                         <BoxButton>
-                             <ButtonLogout />
+                             <ButtonLogout onClick={()=>{sair()}} />
                         </BoxButton>
                     </Col>
                 </Row>
