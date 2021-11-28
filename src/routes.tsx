@@ -16,10 +16,15 @@ interface PrivateRouteProps{
 
 
 function PrivateRoute (props: PrivateRouteProps){
-    const email = localStorage.getItem('email')
-    const password = localStorage.getItem('password')
-    
-    return email && password ? props.children : <Navigate to="/" />;
+    const token = localStorage.getItem('token')
+
+    return token ? props.children : <Navigate to="/" />;
+}
+
+function IsAuth(props: PrivateRouteProps){
+    const token = localStorage.getItem('token')
+   
+    return token ? <Navigate to="/all" /> : props.children; 
 }
 
 
@@ -27,7 +32,9 @@ const Rotas = () => {
    return(
        <Router>
            <Routes>
-              <Route path="/" element={<Login />} />
+              <Route path="/" element={<IsAuth>
+                      <Login />
+              </IsAuth>} />
               <Route path="/home" element={<PrivateRoute>
                   <Home />
               </PrivateRoute>}/>
