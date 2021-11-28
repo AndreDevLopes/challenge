@@ -11,3 +11,7 @@ export const getPokemons = async (offset: number = 0) =>{
 export const getPokemonByName = async (name: string) =>{
     return await api.get(`/pokemon/${name}`)
 }
+
+export const getPokeByUrl = async (url: string) =>{
+    return await api.get(url)
+}

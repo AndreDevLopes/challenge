@@ -12,12 +12,14 @@ interface TemaProp{
 }
 
 export const Container = styled.main`
-    height: 226px;
+    height: 256px;
     width: 165px;
     border-radius: 8px;
     background-color: ${(props: TemaProp)=> props.tema === 'dark'? `${cores.gray_400}` : `${cores.white}`};
     padding:10px;
     box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.05);
+    margin-bottom: 25px;
+    margin-right: 23px;
 `;
 
 export const Title = styled.h1`

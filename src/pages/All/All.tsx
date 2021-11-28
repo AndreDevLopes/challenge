@@ -1,6 +1,7 @@
 import Layout from "../../views/Layout/Layout"
 import ButtonFilter from "../../components/Buttons/ButtonFilter"
 import { RowButtons} from './styles'
+import Cards from "../../views/Cards/Cards"
 
 export default function All() {
     return(
@@ -11,6 +12,7 @@ export default function All() {
                 <ButtonFilter  text="Eletric" />
                 <ButtonFilter  text="Water" />      
             </RowButtons>
+            <Cards />
         </Layout>
     )
 }
