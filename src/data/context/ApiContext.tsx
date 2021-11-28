@@ -4,14 +4,11 @@ type Tema = 'dark' | ''
 
 interface AppContextProps{
     tema?: Tema,
-    favoritos?: Favoritos
-    alternarTema?: () => void
+    favoritos?: Array<any>,
+    alternarTema?: () => void,
     addFavorito?: (poke: Poke) => void
 }
 
-interface Favoritos{
-    favoritos?: Array<any>
-}
 
 interface Poke{
     abilities: Array<any>,
@@ -43,14 +40,17 @@ const AppContext = createContext<AppContextProps>({})
 
 export function AppProvider(props: any): JSX.Element{
     const [tema, setTema] = useState<Tema>('')
-    const [favoritos, setFavoritos] = useState<Favoritos>()
+    const [favoritos, setFavoritos] = useState([] as any)
+    console.log(favoritos)
 
     function alternarTema(): void{
         setTema(tema === '' ? "dark" : "")
     }
 
     function addFavorito(poke: Poke): void{
-        setFavoritos(favoritos)
+        let copia = favoritos
+        copia.push(poke)
+        setFavoritos(copia)
     }
 
     return(

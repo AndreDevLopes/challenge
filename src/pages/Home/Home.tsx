@@ -6,6 +6,6 @@ import useAppData from "../../data/hook/useApiData"
 export default function Home(){
     const cxt = useAppData()
     return(<Layout>
-            {cxt.favoritos? false : <Without />}
+            {cxt.favoritos?.length !== 0 ? false : <Without />}
           </Layout>)
 }

@@ -17,6 +17,7 @@ import Statistics from '../../components/Statistics/Statistics'
 import ButtonModal from '../../components/Buttons/ButtonModal'
 
 
+
 interface ModalProps{
     visivel: boolean,
     poke?: Poke,
@@ -51,6 +52,8 @@ interface Sprites{
 
 
 export default function Modal(props: ModalProps) {
+
+
     const Handletags = ()=>{
         
         let list = props.poke?.types.map((item, index)=>{  
@@ -100,7 +103,7 @@ export default function Modal(props: ModalProps) {
                 </Row>
                 {props.poke ? <Statistics id={props.poke?.id} /> : false}
                 <Row>
-                    <ButtonModal color={cores.primary}>
+                    <ButtonModal color={cores.primary} onClick={()=>{}}>
                         Adicionar aos favoritos
                     </ButtonModal>
                 </Row>
