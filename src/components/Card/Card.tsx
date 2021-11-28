@@ -16,6 +16,7 @@ import ButtonCard from "../Buttons/ButtonCard"
 import useAppData from "../../data/hook/useApiData"
 import { getPokeByUrl } from '../../server/server'
 import { useState, useEffect } from 'react'
+import Modal from '../../views/Modal/Modal'
 
 interface CardProps{
     name: string
@@ -30,6 +31,7 @@ interface Poke{
     height: number,
     held_items: Array<any>,
     id: number,
+    name: string,
     is_default: boolean,
     location_area_encounters: string,
     moves:Array<any>,
@@ -52,6 +54,7 @@ interface Sprites{
 export default function Card(props: CardProps) {
     const ctx = useAppData()
     const [poke, setPoker] = useState<Poke>()
+    const [modalVisivel, setModalVisivel] = useState(false)
 
     useEffect(()=>{
         buscarPoker(props.url)
@@ -67,7 +70,9 @@ export default function Card(props: CardProps) {
     const Handletags = ()=>{
         
         let list = poke?.types.map((item, index)=>{  
-           return <Tag key={index} bg={validationTypePoke(item.type.name)} color={cores.white}>{item.type.name}</Tag>
+           return <Tag key={index} 
+                    bg={validationTypePoke(item.type.name)} 
+                    color={cores.white}>{item.type.name}</Tag>
         })
         return(<>{list}</>)
     }
@@ -84,7 +89,19 @@ export default function Card(props: CardProps) {
             default: return cores.primary
         }
     }
-   
+    
+    const openModal = () =>{
+        let root = document.getElementById('root')
+        root!.style.overflow = 'hidden'
+        setModalVisivel(true)
+        
+    }
+
+    const closeModal = () =>{
+        let root = document.getElementById('root')
+        root!.style.overflow = 'visible'
+        setModalVisivel(false)
+    }
 
     return(<Container tema={ctx.tema}>
                 <RowHeart>
@@ -101,7 +118,9 @@ export default function Card(props: CardProps) {
                     { poke ? Handletags() : false}
                 </RowTags>
                 <RowButton>
-                    <ButtonCard text="Ver detalhes" onClick={()=>{}} />
+                    <ButtonCard text="Ver detalhes" onClick={()=>{openModal()}} />
                 </RowButton>
+                {poke? <Modal poke={poke} visivel={modalVisivel} onClick={()=>{closeModal()}} /> : false}
+                
            </Container >)
 } 

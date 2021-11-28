@@ -6,10 +6,29 @@ import { Conatiner,
          BarCont,
          BarProg
      } from './styles'
+import { useState, useEffect } from 'react'
+import { getStatiticById } from '../../server/server'
 
-export default function Statistics() {
+interface StatisticsProps{
+    id:number
+}
+
+export default function Statistics(props: StatisticsProps) {
+    const [statistica, setStatistica] = useState([])
+
+    useEffect(()=>{
+        listStatistica(props.id)
+    },[props.id])
+
+    const listStatistica = async (id: number) =>{
+        const res = await getStatiticById(id) 
+        if(res.status === 200){
+            setStatistica(res.data.possible_values)
+        }
+    }
+
     const handleEstatistica = () =>{
-        let list = [1,2,3,4,5,6].map((item, index)=>{
+        let list = statistica.map((item, index)=>{
             return(
                 <Row key={index}>
                     <Col size={1}>
@@ -21,7 +40,7 @@ export default function Statistics() {
                         </BarCont>
                     </Col>
                     <Col size={1}>
-                        <Number>35</Number>
+                        <Number>{item}</Number>
                     </Col>
                 </Row>
             )

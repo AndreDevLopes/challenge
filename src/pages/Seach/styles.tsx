@@ -21,3 +21,10 @@ export const Row = styled.div`
 export const Col = styled.div`
     flex:${(props: ColProps)=>props.size};
 `;
+
+export const RowCard = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+`;

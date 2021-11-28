@@ -7,6 +7,10 @@ interface TemaProp{
     tema?:string
 }
 
+interface ModalProps{
+    visivel?: boolean
+}
+
 export const Container = styled.div`
     height: 600px;
     width: 358px;
@@ -22,10 +26,14 @@ export const Box = styled.div`
     height: 100%;
     width: 100%;
     z-index:100;
-    display: flex;
+    display:${(props: ModalProps)=>props.visivel? 'flex' : 'none'};
     align-items: center;
     justify-content: center;
     background-color: rgba(0,0,0,0.4);
+    body{
+        overflow: hidden;
+    } 
+        
 `;
 
 export const Header = styled.section`

@@ -16,6 +16,10 @@ export const getPokeByUrl = async (url: string) =>{
     return await api.get(url)
 }
 
-export const getPokeByType = async(type: string, offset: number = 0) =>{
+export const getPokeByType = async(type: string) =>{
     return await api.get(`/type/${type}`)
+}
+
+export const getStatiticById= async (id:number) =>{
+    return await api(`/characteristic/${id}`)
 }
