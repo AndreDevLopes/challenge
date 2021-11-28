@@ -1,10 +1,11 @@
 import Layout from "../../views/Layout/Layout"
-// import Without from "../../views/Without/Without"
-// import Cards from "../../views/Cards/Cards"
+import Without from "../../views/Without/Without"
+import useAppData from "../../data/hook/useApiData"
+
 
 export default function Home(){
-
+    const cxt = useAppData()
     return(<Layout>
-            {/* <Cards /> */}
+            {cxt.favoritos? false : <Without />}
           </Layout>)
 }

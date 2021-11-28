@@ -11,6 +11,7 @@ import { Container,
        } from "./styles"
 
 import { AiFillHeart } from 'react-icons/ai'
+import { FiHeart } from 'react-icons/fi'
 import cores from "../../ui/cores"
 import ButtonCard from "../Buttons/ButtonCard"
 import useAppData from "../../data/hook/useApiData"
@@ -105,7 +106,8 @@ export default function Card(props: CardProps) {
 
     return(<Container tema={ctx.tema}>
                 <RowHeart>
-                    <AiFillHeart fontSize={30} color={ctx.tema === 'dark'? cores.white : cores.heart} />
+                    {false ?  <AiFillHeart fontSize={30}  color={ctx.tema === 'dark'? cores.white : cores.heart} /> :    
+                    <FiHeart fontSize={30} color={ctx.tema === 'dark'? cores.white : cores.gray_400} />}
                 </RowHeart>
                 <RowImg>
                     <Img src={poke? poke.sprites.front_default : ''} alt="pokemon" />
