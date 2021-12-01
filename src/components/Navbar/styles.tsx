@@ -67,3 +67,15 @@ export const BoxButton = styled.div`
 export const BoxLogo= styled.div`
     margin-left: 10%;
 `;
+
+export const NumFavorito = styled.div`
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background-color: ${cores.gray_500};
+    color:${cores.white};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5px;
+`;

@@ -5,7 +5,8 @@ import { Nav,
          Row,
          Col,
          BoxButton,
-         BoxLogo
+         BoxLogo,
+         NumFavorito
         } from "./styles"
 import logodark from '../../assets/logodark.png'
 import ButtonLogout from "../Buttons/ButtonLogout"
@@ -32,9 +33,15 @@ export default function Navbar(){
                     </Col>
                     <Col size={1}>
                         <Ul>
-                            <Li to="/home" tema={ctx.tema}>Favoritos</Li>
+                            <Li to="/home" tema={ctx.tema}>
+                                Favoritos
+                                {ctx.meusPokes?.favoritos.length !== 0 ? 
+                                  <NumFavorito>{ctx.meusPokes?.favoritos.length}</NumFavorito>:
+                                false}
+                            </Li>
                             <Li to="/seach" tema={ctx.tema}>Procurar</Li>
                             <Li to="/all" tema={ctx.tema}>Ver todos</Li>
+
                         </Ul>
                     </Col>
                     <Col size={2}>
