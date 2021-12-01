@@ -13,7 +13,7 @@ export default function ButtonClose(props: ButtonCloseProps) {
 
     return(
        <BtnClose  onClick={props.onClick}>
-          <AiOutlineClose fontSize={20} color={cxt.tema == "dark"? cores.white : cores.gray_500 } />
+          <AiOutlineClose fontSize={20} color={cxt.tema === "dark"? cores.white : cores.gray_500 } />
        </BtnClose >
     )
 }
