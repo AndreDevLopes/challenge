@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import cores from '../../ui/cores'
 import fonts from '../../ui/fonts'
 import { Link } from "react-router-dom"
+import { device } from '../../ui/devices'
 
 
 interface ColProps{
@@ -12,12 +13,19 @@ interface TemaProps{
     tema?: string
 }
 
+interface MenuProps{
+    visivel?: boolean,
+    tema?: string
+}
+
 
 export const Nav = styled.nav`
     height: 50px;
     background-color: ${(props: TemaProps)=> props.tema === 'dark'? `${cores.gray_400}` : `${cores.primary}`};
     display: flex;
     align-items: center;
+    position: fixed;
+    width: 100%;
 `;
 
 export const Logo = styled.img`
@@ -25,10 +33,13 @@ export const Logo = styled.img`
 `;
 
 export const Ul = styled.ul`
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: space-around;
     list-style: none;
+    @media ${device.tablet}{
+        display: flex;
+    }
 `;
 
 export const Li = styled(Link)`
@@ -62,6 +73,10 @@ export const Col = styled.div`
 
 export const BoxButton = styled.div`
     margin-left: 70%;
+    display: none;
+    @media ${device.tablet}{
+        display: block;
+    }
 `;
 
 export const BoxLogo= styled.div`
@@ -78,4 +93,32 @@ export const NumFavorito = styled.div`
     align-items: center;
     justify-content: center;
     margin-left: 5px;
+`;
+
+export const MenuMobileContainer = styled.section`
+     background-color: ${(props:  MenuProps)=> props.tema === 'dark'? `${cores.gray_400}` : `${cores.primary}`};
+     height: 200px;
+     width: 100%;
+     position: fixed;
+     margin-top: 49px;
+     display: ${(props: MenuProps) => props.visivel? "block":"none"};
+     z-index: 150;
+     padding: 25px;
+     > button{
+         margin-top: 20px;
+         width: 320px;
+         justify-content: space-between;
+         padding-left: 15px;
+         padding-right: 15px;
+     }
+    @media ${device.tablet}{
+        display: none;
+    }
+`;
+
+export const BoxButtonMobile = styled.div`
+    margin-left: 70%;
+    @media ${device.tablet}{
+        display: none;
+    }
 `;

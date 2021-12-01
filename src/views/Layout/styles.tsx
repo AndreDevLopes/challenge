@@ -11,4 +11,5 @@ export const Container = styled.div`
 
 export const Main = styled.section`
     min-height: 80.1vh;
+    padding-top: 50px;
 `;

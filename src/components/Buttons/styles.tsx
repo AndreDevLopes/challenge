@@ -114,6 +114,14 @@ export const BtnClose = styled.button`
     cursor: pointer;
 `;
 
+export const BtnMenu = styled.button`
+    border-radius: 50%;
+    border: none; 
+    background-color: transparent;
+    cursor: pointer;
+`;
+
+
 export const BtnModal = styled.button`
     height: 46px;
     width:100%;
