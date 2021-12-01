@@ -1,7 +1,9 @@
 import styled from "styled-components"
 import cores from '../../ui/cores'
 import fonts from '../../ui/fonts'
+import { device } from '../../ui/devices'
 import { Tag } from '../../components/Card/styles'
+
 
 interface TemaProp{
     tema?:string
@@ -13,11 +15,14 @@ interface ModalProps{
 
 export const Container = styled.div`
     height: 600px;
-    width: 358px;
+    width: 75vw;
     border-radius: 8px;
     padding: 0 24px;
     color: ${(props: TemaProp)=> props.tema === 'dark'? `${cores.white}` : `${cores.gray_500}`};
     background-color: ${(props: TemaProp)=> props.tema === 'dark'? `${cores.gray_400}` : `${cores.white}`};
+    @media ${device.tablet}{
+        width: 358px;
+    }
 `;
 
 export const Box = styled.div`
