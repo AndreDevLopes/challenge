@@ -15,12 +15,13 @@ import ButtonClose from '../../components/Buttons/ButtonClose'
 import cores from '../../ui/cores'
 import Statistics from '../../components/Statistics/Statistics'
 import ButtonModal from '../../components/Buttons/ButtonModal'
+import useAppData from '../../data/hook/useApiData'
 
 
 
 interface ModalProps{
     visivel: boolean,
-    poke?: Poke,
+    poke: Poke,
     onClick?: ()=>void
 }
 
@@ -51,10 +52,11 @@ interface Sprites{
 }
 
 
-export default function Modal(props: ModalProps) {
+export default function Modal(props: ModalProps): JSX.Element {
 
+    const ctx = useAppData()
 
-    const Handletags = ()=>{
+    const handletags = ()=>{
         
         let list = props.poke?.types.map((item, index)=>{  
            return <TagBody key={index} 
@@ -96,16 +98,17 @@ export default function Modal(props: ModalProps) {
                     <SubTitle>{props.poke?.weight} Kg</SubTitle>
                 </Row>
                 <RowTags>
-                    { props.poke ? Handletags() : false}
+                    { props.poke ? handletags() : false}
                 </RowTags>
                 <Row>
                     <Title2>Estatisticas</Title2>
                 </Row>
                 {props.poke ? <Statistics id={props.poke?.id} /> : false}
                 <Row>
-                    <ButtonModal color={cores.primary} onClick={()=>{}}>
+                    {props.poke ? <ButtonModal color={cores.primary} onClick={()=>{ctx.meusPokes?.addFavorito(props.poke)}}>
                         Adicionar aos favoritos
-                    </ButtonModal>
+                    </ButtonModal>: false}
+                    
                 </Row>
             </Container>
         </Box>

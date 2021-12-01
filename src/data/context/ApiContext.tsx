@@ -4,62 +4,43 @@ type Tema = 'dark' | ''
 
 interface AppContextProps{
     tema?: Tema,
-    favoritos?: Array<any>,
+    meusPokes?: { 
+         favoritos: any;
+         addFavorito: (array: any) => void 
+    },
     alternarTema?: () => void,
-    addFavorito?: (poke: Poke) => void
 }
 
-
-interface Poke{
-    abilities: Array<any>,
-    base_experience: number,
-    forms: Array<any>,
-    game_indices:Array<any>,
-    height: number,
-    held_items: Array<any>,
-    id: number,
-    name: string,
-    is_default: boolean,
-    location_area_encounters: string,
-    moves:Array<any>,
-    order: number,
-    past_types: Array<any>,
-    species: object,
-    sprites: Sprites,
-    stats:Array<any>,
-    types:Array<any>,
-    weight:number 
-}
-
-interface Sprites{
-    front_default: string,
-    back_default: string
-}
 
 const AppContext = createContext<AppContextProps>({})
 
 export function AppProvider(props: any): JSX.Element{
     const [tema, setTema] = useState<Tema>('')
-    const [favoritos, setFavoritos] = useState([] as any)
-    console.log(favoritos)
+    const [favoritos, setFavoritos] = useState([] as any)  
 
-    function alternarTema(): void{
-        setTema(tema === '' ? "dark" : "")
+    
+    function addFavorito(array: any ): void{   
+        let copia = favoritos
+        copia.push(array)
+        setFavoritos(copia)  
     }
 
-    function addFavorito(poke: Poke): void{
-        let copia = favoritos
-        copia.push(poke)
-        setFavoritos(copia)
+    let meusPokes = {
+        favoritos,
+        addFavorito
+    }
+   
+ 
+    function alternarTema(): void{
+        setTema(tema === '' ? "dark" : "")
     }
 
     return(
         <div>
             <AppContext.Provider value={{
                 tema,
-                favoritos,
+                meusPokes,
                 alternarTema,
-                addFavorito
             }}>
                 {props.children}
             </AppContext.Provider>

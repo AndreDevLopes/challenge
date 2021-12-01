@@ -3,7 +3,7 @@ import InputSeach from "../../components/Inputs/InputSeach"
 import { Container, Col, Row, RowCard} from './styles'
 import { useState } from 'react'
 import { getPokemonByName } from '../../server/server'
-import CardSeach from '../../components/Card/CardSeach'
+import CardBase from '../../components/Card/CardBase'
 
 interface Poke{
     abilities: Array<any>,
@@ -56,7 +56,7 @@ export default function Seach(){
                 </Row>
                 <Col size={4}>
                     <RowCard>
-                       {poke? <CardSeach poke={poke} /> : false}
+                       {poke? <CardBase poke={poke} /> : false}
                     </RowCard>
                 </Col>
             </Container>

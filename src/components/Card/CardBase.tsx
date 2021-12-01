@@ -9,11 +9,12 @@ import { Container,
     RowButton,
     Img
   } from "./styles"
-
-import { AiFillHeart } from 'react-icons/ai'
+import { FiHeart } from 'react-icons/fi'
 import cores from "../../ui/cores"
 import ButtonCard from "../Buttons/ButtonCard"
 import useAppData from "../../data/hook/useApiData"
+import { useState } from 'react'
+import Modal from '../../views/Modal/Modal'
 
 interface CardPokeProps{
     poke:Poke
@@ -47,10 +48,10 @@ interface Sprites{
 
 
 
-export default function Card(props: CardPokeProps) {
+export default function CardBase(props: CardPokeProps) {
 const ctx = useAppData()
 const poke = props.poke
-
+const [modalVisivel, setModalVisivel] = useState(false)
 
 
 const Handletags = ()=>{
@@ -74,10 +75,23 @@ const validationTypePoke = (nome: string) =>{
    }
 }
 
+const openModal = () =>{
+    let root = document.getElementById('root')
+    root!.style.overflow = 'hidden'
+    setModalVisivel(true)
+    
+}
+
+const closeModal = () =>{
+    let root = document.getElementById('root')
+    root!.style.overflow = 'visible'
+    setModalVisivel(false)
+}
+
 
 return(<Container tema={ctx.tema}>
            <RowHeart>
-               <AiFillHeart fontSize={30} color={ctx.tema === 'dark'? cores.white : cores.heart} />
+               <FiHeart fontSize={30} color={ctx.tema === 'dark'? cores.white : cores.gray_400} />
            </RowHeart>
            <RowImg>
                <Img src={poke? poke.sprites.front_default : ''} alt="pokemon" />
@@ -90,7 +104,8 @@ return(<Container tema={ctx.tema}>
                { poke ? Handletags() : false}
            </RowTags>
            <RowButton>
-               <ButtonCard text="Ver detalhes" onClick={()=>{}} />
+               <ButtonCard text="Ver detalhes" onClick={()=>{openModal()}} />
            </RowButton>
+           {poke? <Modal poke={poke} visivel={modalVisivel} onClick={()=>{closeModal()}} /> : false}
       </Container >)
 } 
