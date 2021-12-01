@@ -14,10 +14,11 @@ import { FiHeart } from 'react-icons/fi'
 import cores from "../../ui/cores"
 import ButtonCard from "../Buttons/ButtonCard"
 import useAppData from "../../data/hooks/useApiData"
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import Modal from '../../views/Modal/Modal'
 import { useFetchPoke } from '../../data/hooks/useFetchPoke'
 import { validationTypePoke } from '../../functions/index'
+import { useModal } from '../../data/hooks/useModal'
 
 interface CardProps{
     name: string
@@ -27,8 +28,8 @@ interface CardProps{
 
 export default function Card(props: CardProps) {
     const ctx = useAppData()
-    const [modalVisivel, setModalVisivel] = useState(false)
-    const {poke, seachPokeByUrl} = useFetchPoke()
+    const { poke, seachPokeByUrl} = useFetchPoke()
+    const { modalVisivel, openModal, closeModal} = useModal()
 
     useEffect(()=>{
         seachPokeByUrl(props.url)
@@ -46,20 +47,6 @@ export default function Card(props: CardProps) {
     }
 
    
-    
-    const openModal = () =>{
-        let root = document.getElementById('root')
-        root!.style.overflow = 'hidden'
-        setModalVisivel(true)
-        
-    }
-
-    const closeModal = () =>{
-        let root = document.getElementById('root')
-        root!.style.overflow = 'visible'
-        setModalVisivel(false)
-    }
-
     return(<Container tema={ctx.tema}>
                 <RowHeart>   
                     <FiHeart fontSize={30} color={ctx.tema === 'dark'? cores.white : cores.gray_400} />

@@ -14,8 +14,9 @@ import { AiFillHeart } from 'react-icons/ai'
 import cores from "../../ui/cores"
 import ButtonCard from "../Buttons/ButtonCard"
 import useAppData from "../../data/hooks/useApiData"
-import { useState } from 'react'
 import Modal from '../../views/Modal/Modal'
+import { useModal } from '../../data/hooks/useModal'
+import { validationTypePoke } from '../../functions/index'
 
 interface CardProps{
     poke: Poke
@@ -50,12 +51,13 @@ interface Sprites{
 
 
 export default function CardFavorito(props: CardProps) {
+
 const ctx = useAppData()
-const [modalVisivel, setModalVisivel] = useState(false)
+const { modalVisivel, closeModal, openModal} = useModal()
 
 
 
-const handletags = ()=>{
+const handleTags = ()=>{
    
    let list = props.poke?.types.map((item, index)=>{  
       return <Tag key={index} 
@@ -65,31 +67,6 @@ const handletags = ()=>{
    return(<>{list}</>)
 }
 
-const validationTypePoke = (nome: string) =>{
-   switch(nome){
-       case 'fire': return cores.dange
-       case 'water': return cores.secondary
-       case 'grass': return cores.success
-       case 'poison': return cores.poison
-       case 'normal': return cores.normal
-       case 'bug': return cores.bug
-       case 'flying': return cores.gray_200
-       default: return cores.primary
-   }
-}
-
-const openModal = () =>{
-   let root = document.getElementById('root')
-   root!.style.overflow = 'hidden'
-   setModalVisivel(true)
-   
-}
-
-const closeModal = () =>{
-   let root = document.getElementById('root')
-   root!.style.overflow = 'visible'
-   setModalVisivel(false)
-}
 
 return(<Container tema={ctx.tema}>
            <RowHeart>
@@ -103,7 +80,7 @@ return(<Container tema={ctx.tema}>
                <SubTitle>ID: {props.poke? props.poke.id : false}</SubTitle>
            </RowText>
            <RowTags>
-               { props.poke ? handletags() : false}
+               { props.poke ? handleTags() : false}
            </RowTags>
            <RowButton>
                <ButtonCard text="Ver detalhes" onClick={()=>{openModal()}} />

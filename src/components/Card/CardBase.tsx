@@ -13,8 +13,9 @@ import { FiHeart } from 'react-icons/fi'
 import cores from "../../ui/cores"
 import ButtonCard from "../Buttons/ButtonCard"
 import useAppData from "../../data/hooks/useApiData"
-import { useState } from 'react'
 import Modal from '../../views/Modal/Modal'
+import { validationTypePoke } from '../../functions/index'
+import { useModal } from '../../data/hooks/useModal'
 
 interface CardPokeProps{
     poke:Poke
@@ -49,45 +50,19 @@ interface Sprites{
 
 
 export default function CardBase(props: CardPokeProps) {
+    
 const ctx = useAppData()
-const poke = props.poke
-const [modalVisivel, setModalVisivel] = useState(false)
+const { poke } = props
+const { modalVisivel, closeModal, openModal} = useModal()
 
 
-const Handletags = ()=>{
+const handleTags = ()=>{
    
    let list = poke?.types.map((item, index)=>{  
       return <Tag key={index} bg={validationTypePoke(item.type.name)} color={cores.white}>{item.type.name}</Tag>
    })
    return(<>{list}</>)
 }
-
-const validationTypePoke = (nome: string) =>{
-   switch(nome){
-       case 'fire': return cores.dange
-       case 'water': return cores.secondary
-       case 'grass': return cores.success
-       case 'poison': return cores.poison
-       case 'normal': return cores.normal
-       case 'bug': return cores.bug
-       case 'flying': return cores.gray_200
-       default: return cores.primary
-   }
-}
-
-const openModal = () =>{
-    let root = document.getElementById('root')
-    root!.style.overflow = 'hidden'
-    setModalVisivel(true)
-    
-}
-
-const closeModal = () =>{
-    let root = document.getElementById('root')
-    root!.style.overflow = 'visible'
-    setModalVisivel(false)
-}
-
 
 return(<Container tema={ctx.tema}>
            <RowHeart>
@@ -101,7 +76,7 @@ return(<Container tema={ctx.tema}>
                <SubTitle>ID: {poke? poke.id : false}</SubTitle>
            </RowText>
            <RowTags>
-               { poke ? Handletags() : false}
+               { poke ? handleTags() : false}
            </RowTags>
            <RowButton>
                <ButtonCard text="Ver detalhes" onClick={()=>{openModal()}} />
