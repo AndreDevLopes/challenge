@@ -1,5 +1,8 @@
 import { useState , useEffect } from 'react'
-import { getPokemons, getPokeByType, getPokemonByName } from '../../server/server'
+import { getPokemons,
+         getPokeByType,
+         getPokemonByName,
+         getPokeByUrl } from '../../server/server'
 
 interface Poke{
     name: string,
@@ -66,6 +69,13 @@ export function useFetchPoke(){
         }
     }
 
-    return {poke, pokes, listPokes, listPokesByTypes, listPokeByName }
+    const seachPokeByUrl = async (url: string) =>{
+        const res = await getPokeByUrl(url)
+        if(res.status === 200){
+            setPoke(res.data)
+        }
+    }
+
+    return {poke, pokes, listPokes, listPokesByTypes, listPokeByName, seachPokeByUrl }
 
 }

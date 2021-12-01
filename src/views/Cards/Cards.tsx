@@ -16,7 +16,8 @@ interface CardsProps{
 
 
 export default function Cards(props: CardsProps) {
-    const HadleCards = () =>{
+
+    const handleCards = () =>{
         let list = props.pokes.map((item, index)=>{
             return <Card key={index}
                          name={item.name? item.name : item.pokemon.name}
@@ -26,6 +27,6 @@ export default function Cards(props: CardsProps) {
     }
 
     return <Container>
-               {HadleCards()}
+               {handleCards()}
             </Container>
 }

@@ -12,7 +12,7 @@ import { Container,
 import { FiHeart } from 'react-icons/fi'
 import cores from "../../ui/cores"
 import ButtonCard from "../Buttons/ButtonCard"
-import useAppData from "../../data/hook/useApiData"
+import useAppData from "../../data/hooks/useApiData"
 import { useState } from 'react'
 import Modal from '../../views/Modal/Modal'
 

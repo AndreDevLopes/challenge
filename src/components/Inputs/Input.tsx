@@ -1,5 +1,5 @@
 import { Entrada } from './styles'
-import useAppData from '../../data/hook/useApiData'
+import useAppData from '../../data/hooks/useApiData'
 
 interface InputProps{
     type: string,

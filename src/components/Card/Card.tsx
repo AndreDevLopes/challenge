@@ -13,62 +13,30 @@ import { Container,
 import { FiHeart } from 'react-icons/fi'
 import cores from "../../ui/cores"
 import ButtonCard from "../Buttons/ButtonCard"
-import useAppData from "../../data/hook/useApiData"
-import { getPokeByUrl } from '../../server/server'
+import useAppData from "../../data/hooks/useApiData"
 import { useState, useEffect } from 'react'
 import Modal from '../../views/Modal/Modal'
+import { useFetchPoke } from '../../data/hooks/useFetchPoke'
+import { validationTypePoke } from '../../functions/index'
 
 interface CardProps{
     name: string
     url: string
 }
 
-interface Poke{
-    abilities: Array<any>,
-    base_experience: number,
-    forms: Array<any>,
-    game_indices:Array<any>,
-    height: number,
-    held_items: Array<any>,
-    id: number,
-    name: string,
-    is_default: boolean,
-    location_area_encounters: string,
-    moves:Array<any>,
-    order: number,
-    past_types: Array<any>,
-    species: object,
-    sprites: Sprites,
-    stats:Array<any>,
-    types:Array<any>,
-    weight:number 
-}
-
-interface Sprites{
-    front_default: string,
-    back_default: string
-}
-
-
 
 export default function Card(props: CardProps) {
     const ctx = useAppData()
-    const [poke, setPoker] = useState<Poke>()
     const [modalVisivel, setModalVisivel] = useState(false)
+    const {poke, seachPokeByUrl} = useFetchPoke()
 
     useEffect(()=>{
-        buscarPoker(props.url)
-    },[props.url])
+        seachPokeByUrl(props.url)
+    },[props.url, seachPokeByUrl])
 
-    const buscarPoker = async (url: string) =>{
-        const res = await getPokeByUrl(url)
-        if(res.status === 200){
-            setPoker(res.data)
-        }
-    }
 
-    const Handletags = ()=>{
-        
+    const handleTags = ()=>{
+
         let list = poke?.types.map((item, index)=>{  
            return <Tag key={index} 
                     bg={validationTypePoke(item.type.name)} 
@@ -77,18 +45,7 @@ export default function Card(props: CardProps) {
         return(<>{list}</>)
     }
 
-    const validationTypePoke = (nome: string) =>{
-        switch(nome){
-            case 'fire': return cores.dange
-            case 'water': return cores.secondary
-            case 'grass': return cores.success
-            case 'poison': return cores.poison
-            case 'normal': return cores.normal
-            case 'bug': return cores.bug
-            case 'flying': return cores.gray_200
-            default: return cores.primary
-        }
-    }
+   
     
     const openModal = () =>{
         let root = document.getElementById('root')
@@ -115,7 +72,7 @@ export default function Card(props: CardProps) {
                     <SubTitle>ID: {poke? poke.id : false}</SubTitle>
                 </RowText>
                 <RowTags>
-                    { poke ? Handletags() : false}
+                    { poke ? handleTags() : false}
                 </RowTags>
                 <RowButton>
                     <ButtonCard text="Ver detalhes" onClick={()=>{openModal()}} />

@@ -2,7 +2,8 @@ import Layout from "../../views/Layout/Layout"
 import ButtonFilter from "../../components/Buttons/ButtonFilter"
 import { RowButtons} from './styles'
 import Cards from "../../views/Cards/Cards"
-import { useFetchPoke } from '../../data/hook/useFetchPoke'
+import { useFetchPoke } from '../../data/hooks/useFetchPoke'
+
 
 export default function All() {
 

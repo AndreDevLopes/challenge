@@ -1,6 +1,6 @@
 import { BtnLogout, Text } from "./styles"
 import { FiLogOut } from 'react-icons/fi'
-import useAppData from '../../data/hook/useApiData'
+import useAppData from '../../data/hooks/useApiData'
 import cores from '../../ui/cores'
 
 interface ButtonLogoutProps{

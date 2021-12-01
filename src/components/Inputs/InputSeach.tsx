@@ -1,5 +1,5 @@
 import { Seach, Btn, Container } from './styles'
-import useAppData from '../../data/hook/useApiData'
+import useAppData from '../../data/hooks/useApiData'
 import { BiSearch } from 'react-icons/bi'
 import cores from '../../ui/cores'
 

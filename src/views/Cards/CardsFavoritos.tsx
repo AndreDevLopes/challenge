@@ -1,8 +1,6 @@
 import CardFavorito from "../../components/Card/CardFavorito"
 import { Container } from "./styles"
 
-
-
 interface Poke{
     abilities: Array<any>,
     base_experience: number,
@@ -37,7 +35,7 @@ interface CardsProps{
 export default function CardsFavoritos(props: CardsProps) {
 
    
-    const hadleCardsFavoritos = () =>{
+    const handleCardsFavoritos = () =>{
         let list = props.pokes.map((item, index)=>{
             return<CardFavorito key={index} poke={item} />
         })
@@ -45,6 +43,6 @@ export default function CardsFavoritos(props: CardsProps) {
     }
 
     return <Container>
-               {hadleCardsFavoritos()}
+               {handleCardsFavoritos()}
             </Container>
 }

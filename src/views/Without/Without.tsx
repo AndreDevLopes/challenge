@@ -1,6 +1,6 @@
 import { Container, Title , SubTitle, Text, BoxButton} from './styles'
 import img from '../../assets/astronaut.png'
-import useAppData from '../../data/hook/useApiData'
+import useAppData from '../../data/hooks/useApiData'
 import ButtonSeach from '../../components/Buttons/ButtonSeach'
 import { useNavigate } from 'react-router'
 

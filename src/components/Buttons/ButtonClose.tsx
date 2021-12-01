@@ -1,6 +1,6 @@
 import { BtnClose } from "./styles"
 import { AiOutlineClose } from 'react-icons/ai'
-import useAppData from '../../data/hook/useApiData'
+import useAppData from '../../data/hooks/useApiData'
 import cores from '../../ui/cores'
 
 

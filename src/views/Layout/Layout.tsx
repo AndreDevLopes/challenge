@@ -1,7 +1,7 @@
 import Navbar from "../../components/Navbar/Navbar"
 import Footer from "../../components/Footer/Footer"
 import { Container , Main} from './styles'
-import useAppData from "../../data/hook/useApiData"
+import useAppData from "../../data/hooks/useApiData"
 
 interface LayoutProps{
     children: any

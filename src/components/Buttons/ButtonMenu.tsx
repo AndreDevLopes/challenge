@@ -1,6 +1,6 @@
 import { BtnMenu } from "./styles"
 import { BiMenu } from 'react-icons/bi'
-import useAppData from '../../data/hook/useApiData'
+import useAppData from '../../data/hooks/useApiData'
 import cores from '../../ui/cores'
 
 

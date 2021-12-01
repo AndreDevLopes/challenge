@@ -13,7 +13,7 @@ import { Container,
 import { AiFillHeart } from 'react-icons/ai'
 import cores from "../../ui/cores"
 import ButtonCard from "../Buttons/ButtonCard"
-import useAppData from "../../data/hook/useApiData"
+import useAppData from "../../data/hooks/useApiData"
 import { useState } from 'react'
 import Modal from '../../views/Modal/Modal'
 

@@ -10,12 +10,12 @@ import { Container,
 import logo from '../../assets/logo.png'
 import img from '../../assets/light.png'
 import imgDark from '../../assets/dark.png'
-import useAppData from "../../data/hook/useApiData"
+import useAppData from "../../data/hooks/useApiData"
 
 
 
 export default function Login(){
-    
+
     const ctx = useAppData()
 
     return (<Container tema={ctx.tema}>

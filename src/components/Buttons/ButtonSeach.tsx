@@ -1,5 +1,5 @@
 import { BtnSeach } from "./styles"
-import useAppData from '../../data/hook/useApiData'
+import useAppData from '../../data/hooks/useApiData'
 
 interface ButtonSeachProps{
     children?: any,

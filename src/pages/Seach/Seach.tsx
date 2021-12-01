@@ -1,9 +1,9 @@
 import Layout from "../../views/Layout/Layout"
 import InputSeach from "../../components/Inputs/InputSeach"
 import { Container, Col, Row, RowCard} from './styles'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import CardBase from '../../components/Card/CardBase'
-import { useFetchPoke } from '../../data/hook/useFetchPoke'
+import { useFetchPoke } from '../../data/hooks/useFetchPoke'
 
 
 export default function Seach(){

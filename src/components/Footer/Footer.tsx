@@ -1,5 +1,5 @@
 import ButtonTema from "../Buttons/ButtonTema"
-import useAppData from "../../data/hook/useApiData"
+import useAppData from "../../data/hooks/useApiData"
 import { Container } from "./styles"
 
 export default function Footer(){

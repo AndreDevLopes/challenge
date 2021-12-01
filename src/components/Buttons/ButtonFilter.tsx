@@ -1,5 +1,5 @@
 import { BtnFilter , Text} from './styles'
-import useAppData from '../../data/hook/useApiData'
+import useAppData from '../../data/hooks/useApiData'
 
 interface ButtonFilterProps{
     text: string,

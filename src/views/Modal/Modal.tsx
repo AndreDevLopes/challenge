@@ -15,8 +15,9 @@ import ButtonClose from '../../components/Buttons/ButtonClose'
 import cores from '../../ui/cores'
 import Statistics from '../../components/Statistics/Statistics'
 import ButtonModal from '../../components/Buttons/ButtonModal'
-import useAppData from '../../data/hook/useApiData'
+import useAppData from '../../data/hooks/useApiData'
 import { useNavigate } from 'react-router'
+import { validationTypePoke, scroll } from '../../functions'
 
 
 
@@ -59,7 +60,7 @@ export default function Modal(props: ModalProps): JSX.Element {
     const ctx = useAppData()
     const navigate = useNavigate()
 
-    const handletags = ()=>{
+    const handleTags = ()=>{
         
         let list = props.poke?.types.map((item, index)=>{  
            return <TagBody key={index} 
@@ -69,23 +70,6 @@ export default function Modal(props: ModalProps): JSX.Element {
         return(<>{list}</>)
     }
 
-    const validationTypePoke = (nome: string) =>{
-        switch(nome){
-            case 'fire': return cores.dange
-            case 'water': return cores.secondary
-            case 'grass': return cores.success
-            case 'poison': return cores.poison
-            case 'normal': return cores.normal
-            case 'bug': return cores.bug
-            case 'flying': return cores.gray_200
-            default: return cores.primary
-        }
-    }
-
-    const scroll = () =>{
-        let root = document.getElementById('root')
-        root!.style.overflow = 'visible'
-    }
 
     return(
         <Box visivel={props.visivel} >
@@ -107,7 +91,7 @@ export default function Modal(props: ModalProps): JSX.Element {
                     <SubTitle>{props.poke?.weight} Kg</SubTitle>
                 </Row>
                 <RowTags>
-                    { props.poke ? handletags() : false}
+                    { props.poke ? handleTags() : false}
                 </RowTags>
                 <Row>
                     <Title2>Estatisticas</Title2>
