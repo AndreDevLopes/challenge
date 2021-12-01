@@ -37,7 +37,6 @@ export default function Seach(){
 
     const listPokeByName = async () =>{
         const res = await getPokemonByName(name)
-        console.log(res)
         if(res.status === 200){
             setPoke(res.data)
         }

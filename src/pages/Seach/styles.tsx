@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { device } from '../../ui/devices'
 
 interface ColProps{
     size: number
@@ -14,8 +15,13 @@ export const Row = styled.div`
     align-items: center;
     justify-content: center;
     align-self:center;
-    width: 50%;
+    width: 100%;
     margin-top:30px;
+    padding-left: 10%;
+    @media ${device.laptop}{
+        padding-left: 0;
+        width: 50%;
+    }
 `;
 
 export const Col = styled.div`
