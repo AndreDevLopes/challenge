@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import fonts from '../../ui/fonts'
 import cores from '../../ui/cores'
+import { device } from '../../ui/devices'
 
 interface TemaProps{
     tema?:string
@@ -12,6 +13,16 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    > img{
+            max-width: 350px;
+    }
+
+    @media ${device.tablet}{
+        > img{
+            max-width: 100%;
+        }
+    }
+
 `;
 
 export const Title = styled.h1`

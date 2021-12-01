@@ -6,7 +6,7 @@ interface ContainerProps{
     tema?:string
 }
 
-export const Container = styled.div`
+export const Container = styled.main`
      background-color: ${(props: ContainerProps)=> props.tema === 'dark'? `${cores.gray_500}` : `${cores.gray_100}`};
 `;
 
