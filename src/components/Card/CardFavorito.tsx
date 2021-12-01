@@ -108,7 +108,7 @@ return(<Container tema={ctx.tema}>
            <RowButton>
                <ButtonCard text="Ver detalhes" onClick={()=>{openModal()}} />
            </RowButton>
-           {props.poke? <Modal poke={props.poke} visivel={modalVisivel} onClick={()=>{closeModal()}} /> : false}
+           {props.poke? <Modal favorito poke={props.poke} visivel={modalVisivel} onClick={()=>{closeModal()}} /> : false}
            
       </Container >)
 } 

@@ -12,7 +12,8 @@ interface FilterProps{
 }
 
 interface ColorProps{
-    color: string
+    color: string,
+    bg: string,
 }
 
 export const Button = styled.button`
@@ -117,7 +118,8 @@ export const BtnModal = styled.button`
     height: 46px;
     width:100%;
     border-radius: 8px;
-    background-color: ${(props: ColorProps)=> props.color};
-    border: solid 1px  ${(props: ColorProps)=> props.color};
+    background-color: ${(props: ColorProps)=> props.bg};
+    border: solid 1px  ${(props: ColorProps)=> props.bg};
+    color: ${(props: ColorProps)=> props.color};
     cursor: pointer;
 `;

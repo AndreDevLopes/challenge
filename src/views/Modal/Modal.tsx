@@ -22,6 +22,7 @@ import useAppData from '../../data/hook/useApiData'
 interface ModalProps{
     visivel: boolean,
     poke: Poke,
+    favorito?: boolean,
     onClick?: ()=>void
 }
 
@@ -105,9 +106,11 @@ export default function Modal(props: ModalProps): JSX.Element {
                 </Row>
                 {props.poke ? <Statistics id={props.poke?.id} /> : false}
                 <Row>
-                    {props.poke ? <ButtonModal color={cores.primary} onClick={()=>{ctx.meusPokes?.addFavorito(props.poke)}}>
+                    {props.favorito ? <ButtonModal bg={cores.dange} color={cores.gray_100} onClick={()=>{ctx.meusPokes?.removeFavorito(props.poke)}}>
+                        Remove dos favoritos
+                    </ButtonModal>: <ButtonModal bg={cores.primary} color={cores.gray_500} onClick={()=>{ctx.meusPokes?.addFavorito(props.poke)}}>
                         Adicionar aos favoritos
-                    </ButtonModal>: false}
+                    </ButtonModal>}
                     
                 </Row>
             </Container>

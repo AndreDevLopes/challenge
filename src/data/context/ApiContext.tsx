@@ -5,8 +5,9 @@ type Tema = 'dark' | ''
 interface AppContextProps{
     tema?: Tema,
     meusPokes?: { 
-         favoritos: any;
-         addFavorito: (array: any) => void 
+         favoritos: any,
+         addFavorito: (array: any) => void,
+         removeFavorito: (array: any) => void
     },
     alternarTema?: () => void,
 }
@@ -25,9 +26,16 @@ export function AppProvider(props: any): JSX.Element{
         setFavoritos(copia)  
     }
 
+    function removeFavorito(poke: any): void{
+        let copia = favoritos
+        copia.splice(copia.indexOf(poke), 1);
+        setFavoritos(copia)  
+    }
+
     let meusPokes = {
         favoritos,
-        addFavorito
+        addFavorito,
+        removeFavorito
     }
    
  
