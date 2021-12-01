@@ -16,6 +16,7 @@ export const Container = styled.div`
     width: 358px;
     border-radius: 8px;
     padding: 0 24px;
+    color: ${(props: TemaProp)=> props.tema === 'dark'? `${cores.white}` : `${cores.gray_500}`};
     background-color: ${(props: TemaProp)=> props.tema === 'dark'? `${cores.gray_400}` : `${cores.white}`};
 `;
 

@@ -16,6 +16,7 @@ import cores from '../../ui/cores'
 import Statistics from '../../components/Statistics/Statistics'
 import ButtonModal from '../../components/Buttons/ButtonModal'
 import useAppData from '../../data/hook/useApiData'
+import { useNavigate } from 'react-router'
 
 
 
@@ -56,6 +57,7 @@ interface Sprites{
 export default function Modal(props: ModalProps): JSX.Element {
 
     const ctx = useAppData()
+    const navigate = useNavigate()
 
     const handletags = ()=>{
         
@@ -79,9 +81,15 @@ export default function Modal(props: ModalProps): JSX.Element {
             default: return cores.primary
         }
     }
+
+    const scroll = () =>{
+        let root = document.getElementById('root')
+        root!.style.overflow = 'visible'
+    }
+
     return(
-        <Box visivel={props.visivel}>
-            <Container>
+        <Box visivel={props.visivel} >
+            <Container tema={ctx.tema}>
                 <Header>
                     <HeaderTitle>
                        Detalhes
@@ -106,9 +114,24 @@ export default function Modal(props: ModalProps): JSX.Element {
                 </Row>
                 {props.poke ? <Statistics id={props.poke?.id} /> : false}
                 <Row>
-                    {props.favorito ? <ButtonModal bg={cores.dange} color={cores.gray_100} onClick={()=>{ctx.meusPokes?.removeFavorito(props.poke)}}>
+                    {props.favorito ? 
+                    <ButtonModal
+                     bg={cores.dange} 
+                     color={cores.gray_100} 
+                     onClick={()=>{ctx.meusPokes?.removeFavorito(props.poke); 
+                     navigate('/all');
+                     scroll();
+                     }}>
                         Remove dos favoritos
-                    </ButtonModal>: <ButtonModal bg={cores.primary} color={cores.gray_500} onClick={()=>{ctx.meusPokes?.addFavorito(props.poke)}}>
+                    </ButtonModal>:
+
+                    <ButtonModal 
+                    bg={cores.primary} 
+                    color={cores.gray_500} 
+                    onClick={()=>{ctx.meusPokes?.addFavorito(props.poke);
+                    navigate('/home');
+                    scroll();
+                    }}>
                         Adicionar aos favoritos
                     </ButtonModal>}
                     

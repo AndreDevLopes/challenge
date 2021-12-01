@@ -1,5 +1,7 @@
 import { BtnClose } from "./styles"
 import { AiOutlineClose } from 'react-icons/ai'
+import useAppData from '../../data/hook/useApiData'
+import cores from '../../ui/cores'
 
 
 interface ButtonCloseProps{
@@ -7,10 +9,11 @@ interface ButtonCloseProps{
 }
 
 export default function ButtonClose(props: ButtonCloseProps) {
+    const cxt = useAppData()
 
     return(
        <BtnClose  onClick={props.onClick}>
-          <AiOutlineClose fontSize={20} />
+          <AiOutlineClose fontSize={20} color={cxt.tema == "dark"? cores.white : cores.gray_500 } />
        </BtnClose >
     )
 }
