@@ -1,46 +1,15 @@
 import Layout from "../../views/Layout/Layout"
 import InputSeach from "../../components/Inputs/InputSeach"
 import { Container, Col, Row, RowCard} from './styles'
-import { useState } from 'react'
-import { getPokemonByName } from '../../server/server'
+import { useEffect, useState } from 'react'
 import CardBase from '../../components/Card/CardBase'
+import { useFetchPoke } from '../../data/hook/useFetchPoke'
 
-interface Poke{
-    abilities: Array<any>,
-    base_experience: number,
-    forms: Array<any>,
-    game_indices:Array<any>,
-    height: number,
-    held_items: Array<any>,
-    id: number,
-    name: string,
-    is_default: boolean,
-    location_area_encounters: string,
-    moves:Array<any>,
-    order: number,
-    past_types: Array<any>,
-    species: object,
-    sprites: Sprites,
-    stats:Array<any>,
-    types:Array<any>,
-    weight:number 
-}
-
-interface Sprites{
-    front_default: string,
-    back_default: string
-}
 
 export default function Seach(){
-    const [poke, setPoke] = useState<Poke>()
-    const [name, setName] = useState('')
 
-    const listPokeByName = async () =>{
-        const res = await getPokemonByName(name)
-        if(res.status === 200){
-            setPoke(res.data)
-        }
-    }
+    const [name, setName] = useState('')
+    const {poke, listPokeByName} = useFetchPoke()
 
     return(<Layout>
             <Container>
@@ -50,7 +19,7 @@ export default function Seach(){
                              type="text"
                              placeholder="Procure por pokémons"
                              onChange={(e)=>{setName(e.target.value)}}
-                             onClick={()=>{listPokeByName()}} />
+                             onClick={()=>{listPokeByName(name)}} />
                     </Col>
                 </Row>
                 <Col size={4}>

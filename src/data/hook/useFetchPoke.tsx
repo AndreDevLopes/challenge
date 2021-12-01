@@ -1,5 +1,5 @@
 import { useState , useEffect } from 'react'
-import { getPokemons , getPokeByType} from '../../server/server'
+import { getPokemons, getPokeByType, getPokemonByName } from '../../server/server'
 
 interface Poke{
     name: string,
@@ -10,9 +10,36 @@ interface Poke{
     }
 }
 
+interface PokeDetails{
+    abilities: Array<any>,
+    base_experience: number,
+    forms: Array<any>,
+    game_indices:Array<any>,
+    height: number,
+    held_items: Array<any>,
+    id: number,
+    name: string,
+    is_default: boolean,
+    location_area_encounters: string,
+    moves:Array<any>,
+    order: number,
+    past_types: Array<any>,
+    species: object,
+    sprites: Sprites,
+    stats:Array<any>,
+    types:Array<any>,
+    weight:number 
+}
+
+interface Sprites{
+    front_default: string,
+    back_default: string
+}
+
 
 export function useFetchPoke(){
     const [pokes, setPokes] = useState<Poke[]>([])
+    const [poke, setPoke] = useState<PokeDetails>()
 
     useEffect(()=>{
         listPokes()
@@ -32,6 +59,13 @@ export function useFetchPoke(){
         }
     }  
 
-    return { pokes, listPokes, listPokesByTypes }
+    const listPokeByName = async (name: string) =>{
+        const res = await getPokemonByName(name)
+        if(res.status === 200){
+            setPoke(res.data)
+        }
+    }
+
+    return {poke, pokes, listPokes, listPokesByTypes, listPokeByName }
 
 }

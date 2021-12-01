@@ -5,10 +5,12 @@ import CardsFavoritos from "../../views/Cards/CardsFavoritos"
 
 
 export default function Home(){
-    const cxt = useAppData()
+    
+    const ctx = useAppData()
+
     return(<Layout>
-            {cxt.meusPokes?.favoritos.length !== 0 ?
-             <CardsFavoritos pokes={cxt.meusPokes?.favoritos} />:
+            {ctx.meusPokes?.favoritos.length !== 0 ?
+             <CardsFavoritos pokes={ctx.meusPokes?.favoritos} />:
              <Without />}
           </Layout>)
 }
