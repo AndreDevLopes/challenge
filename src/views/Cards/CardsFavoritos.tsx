@@ -39,8 +39,7 @@ export default function CardsFavoritos(props: CardsProps) {
    
     const hadleCardsFavoritos = () =>{
         let list = props.pokes.map((item, index)=>{
-            console.log(item)
-            return<CardFavorito poke={item} />
+            return<CardFavorito key={index} poke={item} />
         })
         return(<>{list}</>)
     }
