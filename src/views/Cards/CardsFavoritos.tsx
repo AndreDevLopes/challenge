@@ -1,4 +1,4 @@
-import CardFavorito from "../../components/Card/CardFavorito"
+import CardBase from "../../components/Card/CardBase"
 import { Container } from "./styles"
 
 interface Poke{
@@ -37,7 +37,7 @@ export default function CardsFavoritos(props: CardsProps) {
    
     const handleCardsFavoritos = () =>{
         let list = props.pokes.map((item, index)=>{
-            return<CardFavorito key={index} poke={item} />
+            return<CardBase favorito key={index} poke={item} />
         })
         return(<>{list}</>)
     }

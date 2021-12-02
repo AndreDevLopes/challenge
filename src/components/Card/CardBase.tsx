@@ -10,6 +10,7 @@ import { Container,
     Img
   } from "./styles"
 import { FiHeart } from 'react-icons/fi'
+import { AiFillHeart } from 'react-icons/ai'
 import cores from "../../ui/cores"
 import ButtonCard from "../Buttons/ButtonCard"
 import useAppData from "../../data/hooks/useApiData"
@@ -18,10 +19,11 @@ import { validationTypePoke } from '../../functions/index'
 import { useModal } from '../../data/hooks/useModal'
 
 interface CardPokeProps{
-    poke:Poke
+    poke?:PokeDetails,
+    favorito?: boolean
 }
 
-interface Poke{
+interface PokeDetails{
     abilities: Array<any>,
     base_experience: number,
     forms: Array<any>,
@@ -52,7 +54,7 @@ interface Sprites{
 export default function CardBase(props: CardPokeProps) {
     
 const ctx = useAppData()
-const { poke } = props
+const { poke, favorito } = props
 const { modalVisivel, closeModal, openModal} = useModal()
 
 
@@ -66,13 +68,14 @@ const handleTags = ()=>{
 
 return(<Container tema={ctx.tema}>
            <RowHeart>
-               <FiHeart fontSize={30} color={ctx.tema === 'dark'? cores.white : cores.gray_400} />
+            { favorito? <AiFillHeart fontSize={30}  color={ctx.tema === 'dark'? cores.white : cores.heart} /> :
+               <FiHeart fontSize={30} color={ctx.tema === 'dark'? cores.white : cores.gray_400} />}
            </RowHeart>
            <RowImg>
                <Img src={poke? poke.sprites.front_default : ''} alt="pokemon" />
            </RowImg>
            <RowText>
-               <Title tema={ctx.tema}>{poke.name}</Title>
+               <Title tema={ctx.tema}>{poke?.name}</Title>
                <SubTitle>ID: {poke? poke.id : false}</SubTitle>
            </RowText>
            <RowTags>
@@ -81,6 +84,6 @@ return(<Container tema={ctx.tema}>
            <RowButton>
                <ButtonCard text="Ver detalhes" onClick={()=>{openModal()}} />
            </RowButton>
-           {poke? <Modal poke={poke} visivel={modalVisivel} onClick={()=>{closeModal()}} /> : false}
+           {poke? <Modal poke={poke} favorito={favorito} visivel={modalVisivel} onClick={()=>{closeModal()}} /> : false}
       </Container >)
 } 
